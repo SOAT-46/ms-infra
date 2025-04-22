@@ -7,7 +7,7 @@ variable "region" {
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
-  default     = "fastfood-cluster"
+  default     = "microservices-cluster"
 }
 
 variable "node_max_size" {

@@ -6,10 +6,6 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = ">=2.35.1"
     }
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
   }
 }
 
@@ -161,7 +157,7 @@ resource "kubernetes_ingress_v1" "default" {
 
           backend {
             service {
-              name = kubernetes_service.default.metadata[0].name
+              name = local.prefixed_name
               port {
                 number = 80
               }
