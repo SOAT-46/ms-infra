@@ -16,9 +16,10 @@ terraform {
 resource "helm_release" "rabbitmq" {
   name       = "rabbitmq"
   namespace  = "default"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "rabbitmq"
-  version    = "12.0.2" # you can check latest via: helm search repo bitnami/rabbitmq
+  version    = "15.5.3"
+  create_namespace = true
 
   set {
     name  = "auth.username"

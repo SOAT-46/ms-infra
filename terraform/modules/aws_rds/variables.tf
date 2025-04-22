@@ -1,12 +1,7 @@
-variable "identifier" {
-  description = "The identifier for the RDS instance"
-  type        = string
-  default     = "ms-database"
-}
-
 variable "database_name" {
   description = "The database name for the RDS instance"
   type        = string
+  default     = "ms-database"
 }
 
 variable "allocated_storage" {

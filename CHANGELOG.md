@@ -17,4 +17,5 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ### Added
 
+- added the RDS module in the stack to deploy the applications
 - created the base structure

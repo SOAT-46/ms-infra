@@ -1,5 +1,5 @@
 output "deployment_name" {
-  value       = kubernetes_deployment.default[0].metadata[0].name
+  value       = local.prefixed_name
   description = "The name of the deployment"
 }
 
@@ -8,7 +8,7 @@ output "service_name" {
   description = "The name of the service"
 }
 
-output "ingress_url" {
-  value       = length(kubernetes_ingress_v1.default) > 0 ? kubernetes_ingress_v1.default[0].status[0].load_balancer[0].ingress[0].ip : ""
-  description = "The Load Balancer Ingress IP Address"
-}
+# output "ingress_url" {
+#   value       = length(kubernetes_ingress_v1.default) > 0 ? kubernetes_ingress_v1.default[0].status[0].load_balancer[0].ingress[0].ip : ""
+#   description = "The Load Balancer Ingress IP Address"
+# }

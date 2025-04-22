@@ -24,72 +24,22 @@ module "node" {
   depends_on = [module.cluster]
 }
 
+module "security_group" {
+  source = "../../modules/aws_security_groups"
+}
+
 locals {
+  database_name = "videos"
   environment       = "dev"
   video_crud_image  = "soat46/ms-video:latest"
   mail_sender_image = "soat46/ms-mail:latest"
 }
 
-module "namespace" {
-  source = "../../modules/k8s_namespace"
+module "rds" {
+  source = "../../modules/aws_rds"
 
-  namespace = "soat-video-flow"
-}
+  database_name = local.database_name
+  vpc_security_group_ids = [module.security_group.database_security_group_id]
 
-module "video_crud" {
-  source             = "../../modules/k8s_deployment"
-  container_image    = local.video_crud_image
-  container_name     = "video-crud"
-  environment        = local.environment
-  namespace          = module.namespace.name
-  is_ingress_enabled = false
-  is_service_enabled = true
-
-  config_map_data = {
-
-  }
-
-  secret_data = {
-
-  }
-
-  container_resources = {
-    requests = {
-      cpu    = "250m"
-      memory = "64Mi"
-    }
-    limits = {
-      cpu    = "1000m"
-      memory = "512Mi"
-    }
-  }
-}
-
-module "mail_sender" {
-  source             = "../../modules/k8s_deployment"
-  container_image    = local.mail_sender_image
-  container_name     = "mail-sender"
-  environment        = local.environment
-  namespace          = module.namespace.name
-  is_ingress_enabled = false
-  is_service_enabled = true
-
-  config_map_data = {
-
-  }
-
-  secret_data = {
-
-  }
-
-  container_resources = {
-    requests = {
-      cpu    = "250m"
-      memory = "64Mi"
-    }
-    limits = {
-      cpu    = "1000m"
-      memory = "512Mi"
-    }
-  }
+  depends_on = [module.security_group]
 }
