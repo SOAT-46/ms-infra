@@ -12,19 +12,19 @@ variable "cluster_name" {
 
 variable "node_max_size" {
   type        = number
-  description = "The node max size for the EKS worknodes"
+  description = "The node max size for the EKS work nodes"
   default     = 4
 }
 
 variable "node_min_size" {
   type        = number
-  description = "The node min size for the EKS worknodes"
+  description = "The node min size for the EKS work nodes"
   default     = 2
 }
 
 variable "node_desired_size" {
   type        = number
-  description = "The node desired size for the EKS worknodes"
+  description = "The node desired size for the EKS work nodes"
   default     = 2
 }
 
@@ -37,5 +37,4 @@ variable "cidr" {
 variable "account_id" {
   description = "The AWS Account ID"
   type        = string
-  default     = "830543321077"
 }

@@ -17,3 +17,7 @@ data "aws_subnet" "subnet" {
 data "aws_iam_role" "labrole" {
   name = "LabRole"
 }
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.cluster.cluster_name
+}
