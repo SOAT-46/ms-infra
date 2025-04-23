@@ -15,9 +15,10 @@ terraform {
 
 resource "helm_release" "rabbitmq" {
   name       = "rabbitmq"
-  namespace  = "default"
-  repository = "oci://registry-1.docker.io/bitnamicharts"
+  namespace  = "rabbitmq"
   chart      = "rabbitmq"
+  repository = "oci://registry-1.docker.io/bitnamicharts"
+
   version    = "15.5.3"
   create_namespace = true
 
@@ -39,6 +40,21 @@ resource "helm_release" "rabbitmq" {
   set {
     name  = "service.type"
     value = "ClusterIP"
+  }
+
+  set {
+    name  = "image.registry"
+    value = "docker.io"
+  }
+
+  set {
+    name  = "image.repository"
+    value = "bitnami/rabbitmq"
+  }
+
+  set {
+    name  = "image.tag"
+    value = "3.12.12"
   }
 
   # Optional: Expose via NodePort

@@ -9,3 +9,7 @@ output "rabbitmq_credentials" {
   }
   sensitive = true
 }
+
+output "rabbitmq_internal_service" {
+  value = "${helm_release.rabbitmq.name}-rabbitmq"
+}

@@ -11,3 +11,8 @@ variable "erlang_cookie" {
   default   = "supersecretcookie"
   sensitive = true
 }
+
+variable "cluster_name" {
+  description = "The cluster name"
+  type        = string
+}

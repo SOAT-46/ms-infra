@@ -17,5 +17,6 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ### Added
 
+- added RabbitMQ and Video CRUD deployment
 - added the RDS module in the stack to deploy the applications
 - created the base structure
